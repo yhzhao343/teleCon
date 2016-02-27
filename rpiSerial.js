@@ -11,8 +11,7 @@ serialPort.open(function (error) {
     serialPort.on('data', function(data) {
       console.log('data received: ' + data);
     });
-    serialPort.write("ls\n", function(err, results) {
-      console.log('err ' + err);
+    serialPort.write("very interesting\n", function(err, results) {
       console.log('results ' + results);
     });
   }
