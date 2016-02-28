@@ -5,7 +5,7 @@ char cycleState;
 char runMode;
 char blue_state;
 char red_state;
-char* buf;
+char buf;
 unsigned int bufNdx = 0;
 #define BLUE_BUTTON 8
 #define RED_BUTTON 3
@@ -23,31 +23,18 @@ void setup() {
   runMode = 0;
   Serial.begin(9600);
   Serial1.begin(9600);
-  Serial.println("--- Start Serial Monitor SEND_RCVE ---");
-  Serial.println();
   for(int i = 0; i < 4; i++) {
     pinMode(motorPins[i], OUTPUT);
   }
   pinMode(RED_BUTTON, INPUT_PULLUP);
   pinMode(BLUE_BUTTON, INPUT_PULLUP);
-  buf = (char*) malloc(512);
 }
 
 
 void loop() {
-  while(Serial1.available()) {
-    buf[bufNdx] = Serial1.read();
-    bufNdx++;
+  if(Serial.available()) {
+    Serial.println(Serial.read());
   }
-  if (*buf) {
-    Serial.println(buf);
-  }
-  while(bufNdx >= 0) {
-    buf[bufNdx] = 0;
-    bufNdx--;
-  }
-  
-  
   voltage = analogRead(A4);
   red_state = digitalRead(RED_BUTTON);
   blue_state = digitalRead(BLUE_BUTTON);
