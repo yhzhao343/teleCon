@@ -33,7 +33,7 @@ void setup() {
 
 void loop() {
   if(Serial.available()) {
-    Serial.println(Serial.read());
+    Serial1.println(Serial.read());
   }
   voltage = analogRead(A4);
   red_state = digitalRead(RED_BUTTON);
