@@ -10,6 +10,9 @@
         <button ng-click="cam.pressShutter(); shutterPressed = true; startCounter()" ng-disabled="shutterPressed">pressShutter</button>
         <button ng-click="cam.releaseShutter(); shutterPressed = false; clearCounter()" ng-disabled="!shutterPressed">releaseShutter</button>
         <span ng-show="shutterPressed">{{counter}}</span>
+        <div>
+            <d3-Test data="d3Data" label="title"></d3-Test>
+        </div>
     </div>
     <br/>
 </div>

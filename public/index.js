@@ -1,8 +1,12 @@
 (function() {
-    "use strict";
-    angular.module('teleCtrl', ['teleCtrl.camera', 'teleCtrl.controller', 'teleCtrl.routes', 'teleCtrl.com']);
-    angular.module('teleCtrl.controller', ['teleCtrl.camera', 'teleCtrl.com'])
+    angular.module('teleCtrl', ['teleCtrl.controller', 'teleCtrl.routes', 'teleCtrl.directives', 'teleCtrl.d3', 'teleCtrl.star_calc', 'teleCtrl.com']);
+    angular.module('teleCtrl.controller', ['teleCtrl.camera', 'teleCtrl.com', 'teleCtrl.d3', 'teleCtrl.star_database', 'teleCtrl.star_calc', 'teleCtrl.star_settings']);
+    angular.module('teleCtrl.directives', ['teleCtrl.d3', 'teleCtrl.star_calc', 'teleCtrl.star_settings']);
+    angular.module('teleCtrl.star_calc',['teleCtrl.star_database', 'teleCtrl.star_settings']);
     angular.module('teleCtrl.camera', ['teleCtrl.com']);
+    angular.module('teleCtrl.d3', []);
+    angular.module('teleCtrl.star_settings', []);
+    angular.module('teleCtrl.star_database',[]);
     angular.module('teleCtrl.routes', []);
     angular.module('teleCtrl.com', []);
 })();

@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
   angular.module('teleCtrl.com')
   .factory('socket', ['$rootScope', function ($rootScope) {
     var socket = io.connect();
@@ -24,4 +23,4 @@
       }
     };
   }])
-})()
+})();
