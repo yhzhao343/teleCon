@@ -73,80 +73,24 @@
                     star.AZ = Math.atan2(yhor, xhor) + Math.PI;
                     star.ALT = Math.asin(zhor);
                 })
-                //return LST
             },
             project:function() {
                 var visible_stars = [];
                 for (var i = 0; i < star_database.stars.length; i++) {
                     var star = star_database.stars[i]
-                    if (star.mag > star_settings.min_magnitude) {
-                        break;
-                    } else {
-                        var processed_star;
-                        switch(star_settings.projection) {
-                            case "polar" :
-                                processed_star = polar(star);
-                                break;
-                            case "stereo" :
-                                processed_star = stereo(star);
-                                break;
-                            default:
-                                processed_star = polar(star);
-                        }
-                        if (processed_star) {
-                            visible_stars.push(processed_star);
-                        };
+                    var processed_star;
+                    switch(star_settings.projection) {
+                        case "polar" :
+                            processed_star = polar(star);
+                            break;
+                        case "stereo" :
+                            processed_star = stereo(star);
+                            break;
+                        default:
+                            processed_star = polar(star);
                     }
-                };
-                return visible_stars;
+                }
             }
-            // stereo: function() {
-            //     var visible_stars = [];
-            //     star_database.stars.forEach(function(star) {
-            //         var el = star.ALT
-            //         var az = star.AZ;
-            //         if (el < 0 || isNaN(el) || isNaN(az)) {
-            //             return;
-            //         }
-            //         var w = 960;
-            //         var h = 960;
-            //         var f = 0.42;
-            //         var sinel1 = 0;
-            //         var cosel1 = 1;
-            //         var cosaz = Math.cos((az-Math.PI));
-            //         var sinaz = Math.sin((az-Math.PI));
-            //         var sinel = Math.sin(el);
-            //         var cosel = Math.cos(el);
-            //         var k = 2/(1+sinel1*sinel+cosel1*cosel*cosaz);
-            //         star.x = w/2+f*k*h*cosel*sinaz;
-            //         star.y = (h-f*k*h*(cosel1*sinel-sinel1*cosel*cosaz));
-            //         visible_stars.push(star);
-            //     });
-            //     return visible_stars;
-            // },
-
-            // polar: function() {
-            //     var visible_stars = [];
-            //     star_database.stars.forEach(function(star) {
-            //         var az = star.AZ;
-            //         var el = star.ALT;
-            //         if (el < 0 || isNaN(az) || isNaN(el) || star.mag > 4) {
-            //             return ;
-            //         }
-            //         if (star.hip === 97649) {
-            //             console.log("this is Altair");
-            //         };
-            //         var h = 960;
-            //         var w = 960;
-            //         var radius = h/2;
-            //         var r = radius*((Math.PI/2)-el)/(Math.PI/2);
-            //         star.x = (w/2-r*Math.sin(az));
-            //         star.y = (radius-r*Math.cos(az))
-            //         visible_stars.push(star);
-            //     })
-            //     return visible_stars;
-            // }
-
         };
     }])
 

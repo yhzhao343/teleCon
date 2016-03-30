@@ -1,18 +1,46 @@
 <div>
     <p>testtesttest</p>
     <div>
-      <textarea rows="30" cols="70" ng-model="info.debug"></textarea>
-    </div>
-    <div>
-        <button ng-repeat="(key, value) in cam.commandList" ng-click="cam[key]()">{{key}}</button>
-    </div>
-    <div>
-        <button ng-click="cam.pressShutter(); shutterPressed = true; startCounter()" ng-disabled="shutterPressed">pressShutter</button>
-        <button ng-click="cam.releaseShutter(); shutterPressed = false; clearCounter()" ng-disabled="!shutterPressed">releaseShutter</button>
-        <span ng-show="shutterPressed">{{counter}}</span>
-        <div>
-            <d3-Test data="d3Data" label="title"></d3-Test>
+        <div id="star_map_container" ng-show="star_settings.map_on" style="float: left;">
+            <star-Map></star-Map>
+        </div>
+        <div ng-show = "star_settings.cur_star">
+            <table border="1" style="width:50%">
+              <tr>
+                <td>cur_star:</td>
+                <td>{{star_settings.cur_star.proper}}</td>
+              </tr>
+              <tr>
+                <td>hip</td>
+                <td>{{star_settings.cur_star.hip}}</td>
+              </tr>
+              <tr>
+                <td>RA</td>
+                <td>{{star_settings.cur_star.ra}}</td>
+              </tr>
+              <tr>
+                <td>DEC</td>
+                <td>{{star_settings.cur_star.dec}}</td>
+              </tr>
+              <tr>
+                <td>ALT</td>
+                <td>{{star_settings.cur_star.ALT}}</td>
+              </tr>
+              <tr>
+                <td>AZ</td>
+                <td>{{star_settings.cur_star.AZ}}</td>
+              </tr>
+              <tr>
+                <td>magnitude</td>
+                <td>{{star_settings.cur_star.mag}}</td>
+              </tr>
+              <tr>
+                <td>constellation</td>
+                <td>{{star_settings.cur_star.con}}</td>
+              </tr>
+            </table>
         </div>
     </div>
+
     <br/>
 </div>

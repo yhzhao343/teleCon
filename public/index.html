@@ -7,6 +7,14 @@
 
 <body ng-app="teleCtrl">
   <div>
+    <ul>
+      <li goto-page="home"> Home</li>
+      <li goto-page="camera"> Camera</li>
+      <li>Contact</li>
+      <li>About</li>
+    </ul>
+  </div>
+  <div>
     <div ng-view></div>
   </div>
 
@@ -25,6 +33,7 @@
   <script src="./com.js"></script>
 
   <script src="./components/home/HomeCtrl.js"></script>
+  <script src="./components/camera/CameraCtrl.js"></script>
   <link rel="stylesheet" href="./index.css">
 </body>
 
